@@ -184,6 +184,27 @@ ul {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
+.prompt-code {
+  margin: 0.55rem 0 0.15rem;
+  background: #0c142a;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.7rem 0.85rem;
+  color: #e6edff;
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
+.prompt-code.is-hidden {
+  display: none;
+}
+
+.prompt-code__code {
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 .card__actions {
   display: flex;
   gap: 0.4rem;
@@ -229,6 +250,13 @@ ul {
   font-weight: 700;
   color: var(--accent);
   margin-bottom: 0.35rem;
+}
+
+.hint-text {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0;
 }
 
 pre {

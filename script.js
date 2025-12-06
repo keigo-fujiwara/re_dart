@@ -23,6 +23,7 @@ void main() {
     title: "for ループでリストを表示",
     prompt: "リスト items の要素を for ループで順番に表示してください。",
     hint: "length プロパティで要素数を取り、インデックス i を 0 から増やして取り出します。",
+    extraCode: "List<String> items = ['Pen', 'Book', 'Eraser', 'Pencil'];",
     answer: `
 void main() {
   List<String> items = ['Pen', 'Book', 'Eraser', 'Pencil'];
@@ -80,7 +81,7 @@ class Monster {
   {
     id: "Q6",
     title: "Monster に短縮コンストラクタを追加",
-    prompt: "name と hp を必須で受け取る短縮形コンストラクタを追加してください。",
+    prompt: "name と hp を必須で受け取る短縮形コンストラクタを追加し、インスタンスを生成して name と hp を print で出力して確認してください。",
     hint: "フィールド名をそのままコンストラクタ引数に書く this. フォームが簡潔です。",
     answer: `
 class Monster {
@@ -102,6 +103,7 @@ void main() {
     title: "HP を回復するメソッド",
     prompt: "Monster に hp を指定量回復させ、回復後の hp を返すメソッド heal(int amount) を追加してください。",
     hint: "フィールド hp を更新し、更新後の値を return すれば良いです。",
+    extraCode: "(確認方法)\n\nprint(monster1.heal(1000));",
     answer: `
 class Monster {
   String name;
@@ -147,6 +149,7 @@ class Golem extends Monster {
     title: "Golem に set メソッドを追加",
     prompt: "Golem に攻撃力・防御力を登録して出力する set(int attack, int defense) を追加してください。",
     hint: "フィールドに代入後、フォーマット文字列で出力します。",
+    extraCode: 'print("${this.name}の攻撃力を${this.attack}、防御力を${this.defense}と設定しました");',
     answer: `
 class Monster {
   String name;
@@ -237,6 +240,7 @@ function renderCard(ex) {
     </div>
     <div class="card__body">
       <p class="prompt"></p>
+      <pre class="prompt-code ${ex.extraCode ? "" : "is-hidden"}"><code class="prompt-code__code"></code></pre>
     </div>
     <div class="card__actions">
       <button class="btn" data-toggle="hint" data-label-open="ヒントを表示" data-label-close="ヒントを隠す">ヒントを表示</button>
@@ -257,6 +261,10 @@ function renderCard(ex) {
   `;
 
   card.querySelector(".prompt").textContent = ex.prompt;
+  const promptCode = card.querySelector(".prompt-code__code");
+  if (promptCode && ex.extraCode) {
+    promptCode.textContent = ex.extraCode;
+  }
   card.querySelector(".hint-text").textContent = ex.hint;
   const trimmedAnswer = ex.answer.trim();
   card.querySelector(".code-block").textContent = trimmedAnswer;
